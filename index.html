@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YULLA SANAT</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+  />
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Just some margin for search input */
+    #searchInput {
+      max-width: 200px;
+      margin-left: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">YULLA SANAT</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span id="bar"><i class="fas fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#featured">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="#footer">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#footer">Contact Us</a></li>
+          <li class="nav-item">
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Search products..."
+              class="form-control"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" style="padding-top:80px;">
+    <div class="container">
+      <h5>NEW ARRIVALS</h5>
+      <h1><span>THE BEST</span> PRICES</h1>
+      <p>Small touches. Big differences</p>
+      <a href="#featured"><button>Shop Now</button></a>
+    </div>
+  </section>
+
+  <section id="new" class="w-100">
+    <div class="container">
+      <div class="row p-0 m-0">
+        <div class="one col-lg-4 col-md-12 col-12 p-0">
+          <img class="img-fluid" src="1.jpg" alt="" />
+          <div class="details">
+            <h2>SOMETHINGGG</h2>
+            <a href="#featured"><button>Shop Now</button></a>
+          </div>
+        </div>
+        <div class="one col-lg-4 col-md-12 col-12 p-0">
+          <img class="img-fluid" src="2.jpg" alt="" />
+          <div class="details">
+            <h2>SOMETHINGGG</h2>
+            <a href="#featured"><button>Shop Now</button></a>
+          </div>
+        </div>
+        <div class="one col-lg-4 col-md-12 col-12 p-0">
+          <img class="img-fluid" src="3.jpg" alt="" />
+          <div class="details">
+            <h2>SOMETHINGGG</h2>
+            <a href="#featured"><button>Shop Now</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS SECTION -->
+  <section id="featured" class="my-5 pb-5">
+    <div class="container text-center mt-5 py-5">
+      <h3>Our featured</h3>
+      <hr class="mx-auto" />
+      <p>Here you can check out our new products with fair price on Yulla Sanat</p>
+      <!-- Search message will appear here -->
+      <p id="searchMessage" style="font-weight:bold; margin-top:1rem;"></p>
+    </div>
+    <div class="row mx-auto container-fluid" id="products-container">
+      <!-- Products will be inserted here dynamically -->
+    </div>
+  </section>
+
+  <footer id="footer" class="mt-5 py-5">
+    <div class="row container mx-auto pt-5">
+      <div class="footer-one col-lg-3 col-md-6 col-12">
+      </div>
+      <div class="footer-one col-lg-3 col-md-6 col-12">
+        <h5 class="pb-2">Featured</h5>
+        <ul class="text-uppercase list-unstyled">
+          <li><a href="#featured">New Arrivals</a></li>
+          <li><a href="#featured">Best Sellers</a></li>
+          <li><a href="#featured">Sale</a></li>
+      </div>
+      <div class="footer-one col-lg-3 col-md-6 col-12">
+        <h5 class="pb-2">Contact Us</h5>
+        <div>
+          <a href="https://www.instagram.com/yulla_sanat/" class="text-uppercase"
+            >instagram</a
+          >
+        </div>
+      </div>
+    </div>
+    <div class="copyright mt-5">
+      <div class="row container ml-auto">
+        <div class="col-lg-3 col-md-6 col-12 text-nowrap text-center">
+          <p>YULLA SANAT © 2025 ALL RIGHTS RESERVED</p>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+          <a href="https://www.instagram.com/yulla_sanat/"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+
+
+  <script>
+    // Your Firebase config here
+  const firebaseConfig = {
+    apiKey: "AIzaSyBDvrceagyHnmgv_FxcG_fxBSKlzHQdzy8",
+    authDomain: "yulla-sanat.firebaseapp.com",
+    projectId: "yulla-sanat",
+    storageBucket: "yulla-sanat.firebasestorage.app",
+    messagingSenderId: "979932988742",
+    appId: "1:979932988742:web:6ef0ff4dea51e24c0ad147"
+  }; 
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const productsContainer = document.getElementById("products-container");
+    const searchInput = document.getElementById("searchInput");
+    const featuredSection = document.getElementById("featured");
+    const searchMessage = document.getElementById("searchMessage");
+
+    let allProducts = [];
+
+    // Load all products from Firestore once
+    function loadProducts() {
+      productsContainer.innerHTML = "";
+      searchMessage.textContent = "";
+      db.collection("products").onSnapshot(
+        (snapshot) => {
+          allProducts = [];
+          snapshot.forEach((doc) => {
+            allProducts.push({ id: doc.id, ...doc.data() });
+          });
+          displayProducts(allProducts);
+        },
+        (error) => {
+          console.error("Error loading products:", error);
+        }
+      );
+    }
+
+    // Display given products
+    function displayProducts(products) {
+  productsContainer.innerHTML = "";
+  if (products.length === 0) {
+    productsContainer.innerHTML = "<p>No products match your search.</p>";
+    return;
+  }
+  products.forEach((product, index) => {
+    const images =
+      product.images && product.images.length > 0
+        ? product.images
+        : ["default.jpg"];
+    const carouselId = `carousel-${index}`; // unique id per product
+
+    // If only one image, show just the image without carousel
+    if (images.length === 1) {
+      const productHTML = `
+        <div class="product text-center col-lg-3 col-md-4 col-12 mb-4">
+          <img src="${images[0]}" class="d-block w-100" alt="${product.title}" style="max-height:250px; object-fit:contain;" />
+          <h5 class="p-name mt-2">${product.title}</h5>
+          <p class="p-desc">${product.description || ""}</p>
+          <h4 class="p-price">${product.price}₺</h4>
+        </div>
+      `;
+      productsContainer.insertAdjacentHTML("beforeend", productHTML);
+      return; // skip the carousel HTML
+    }
+
+    // For multiple images, build carousel HTML as before
+    const indicatorsHTML = images
+      .map(
+        (_, i) =>
+          `<li data-target="#${carouselId}" data-slide-to="${i}"${
+            i === 0 ? ' class="active"' : ""
+          }></li>`
+      )
+      .join("");
+
+    const itemsHTML = images
+      .map(
+        (imgSrc, i) =>
+          `<div class="carousel-item${i === 0 ? " active" : ""}">
+            <img src="${imgSrc}" class="d-block w-100" alt="${product.title} image ${
+            i + 1
+          }" style="max-height:250px; object-fit:contain;" />
+          </div>`
+      )
+      .join("");
+
+    const productHTML = `
+      <div class="product text-center col-lg-3 col-md-4 col-12 mb-4">
+        <div id="${carouselId}" class="carousel slide" data-ride="carousel" data-interval="false">
+          <ol class="carousel-indicators">
+            ${indicatorsHTML}
+          </ol>
+          <div class="carousel-inner">
+            ${itemsHTML}
+          </div>
+          <a class="carousel-control-prev" href="#${carouselId}" role="button" data-slide="prev" onclick="event.preventDefault()">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#${carouselId}" role="button" data-slide="next" onclick="event.preventDefault()">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        <h5 class="p-name mt-2">${product.title}</h5>
+        <p class="p-desc">${product.description || ""}</p>
+        <h4 class="p-price">${product.price}₺</h4>
+      </div>
+    `;
+    productsContainer.insertAdjacentHTML("beforeend", productHTML);
+  });
+}
+
+    // Filter and scroll
+    function searchProducts(term) {
+      term = term.toLowerCase().trim();
+      if (term.length === 0) {
+        searchMessage.textContent = "";
+        displayProducts(allProducts);
+        return;
+      }
+      const filtered = allProducts.filter(
+        (p) =>
+          p.name.toLowerCase().includes(term) ||
+          (p.description && p.description.toLowerCase().includes(term))
+      );
+
+      searchMessage.textContent = `Showing results for "${term}" (${filtered.length} found)`;
+
+      featuredSection.scrollIntoView({ behavior: "smooth" });
+      displayProducts(filtered);
+    }
+
+    // Search input listener
+    searchInput.addEventListener("input", (e) => {
+      searchProducts(e.target.value);
+    });
+
+    window.onload = () => {
+      loadProducts();
+    };
+  </script>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+  ></script>
+</body>
+</html>
